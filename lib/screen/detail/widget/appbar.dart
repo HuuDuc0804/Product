@@ -10,33 +10,30 @@ class DetailAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        children: [
-          IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: SizedBox(
-              width: 10,
-              height: 18,
-              child: SvgPicture.asset(
-                AppImages.backArrowIcon,
-              ),
+    return Row(
+      children: [
+        IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: SizedBox(
+            width: 10,
+            height: 18,
+            child: SvgPicture.asset(
+              AppImages.backArrowIcon,
             ),
           ),
-          const Spacer(),
-          IconButton(
-            onPressed: () => debugPrint('onTab Share'),
-            icon: SizedBox(
-              width: 20,
-              height: 20,
-              child: SvgPicture.asset(
-                AppImages.shareIcon,
-              ),
+        ),
+        const Spacer(),
+        IconButton(
+          onPressed: () => debugPrint('onTab Share'),
+          icon: SizedBox(
+            width: 20,
+            height: 20,
+            child: SvgPicture.asset(
+              AppImages.shareIcon,
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
