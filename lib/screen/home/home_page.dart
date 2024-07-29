@@ -8,14 +8,37 @@ import '../../utils/colors.dart';
 import 'widget/product.dart';
 import 'widget/search.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  TextEditingController controller = TextEditingController();
+  List<CategoryModel> listCategory = Data.dataCategory;
+
+  @override
+  void initState() {
+    controller.addListener(() {
+      setState(() {
+        listCategory = Data.dataCategory
+            .where((item) => item.title
+                .toLowerCase()
+                .contains(controller.text.toLowerCase()))
+            .toList();
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.white,
+        centerTitle: true,
         title: Text(
           'Find Products',
           style: gilroyBold.copyWith(
@@ -29,7 +52,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 12),
-            const SearchWidget(),
+            SearchWidget(
+              controller: controller,
+            ),
             const SizedBox(height: 18),
             Expanded(
               child: GridView.builder(
@@ -37,9 +62,9 @@ class HomePage extends StatelessWidget {
                   crossAxisCount: 2,
                   mainAxisSpacing: 14,
                 ),
-                itemCount: Data.dataCategory.length,
+                itemCount: listCategory.length,
                 itemBuilder: (BuildContext context, int index) {
-                  CategoryModel item = Data.dataCategory[index];
+                  CategoryModel item = listCategory[index];
                   return GestureDetector(
                     onTap: () => Navigator.push(
                       context,
@@ -56,6 +81,7 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
+            const SizedBox(height: 25),
           ],
         ),
       ),

@@ -43,9 +43,9 @@ class ProductTitleWidget extends StatelessWidget {
               ),
             ],
           ),
-          GestureDetector(
-            onTap: () => debugPrint('onTab Like'),
-            child: SizedBox(
+          IconButton(
+            onPressed: () => debugPrint('onTab Like'),
+            icon: SizedBox(
               width: 24,
               height: 24,
               child: SvgPicture.asset(

@@ -14,9 +14,9 @@ class DetailAppBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         children: [
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: SizedBox(
+          IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: SizedBox(
               width: 10,
               height: 18,
               child: SvgPicture.asset(
@@ -25,9 +25,9 @@ class DetailAppBar extends StatelessWidget {
             ),
           ),
           const Spacer(),
-          GestureDetector(
-            onTap: () => debugPrint('onTab Share'),
-            child: SizedBox(
+          IconButton(
+            onPressed: () => debugPrint('onTab Share'),
+            icon: SizedBox(
               width: 20,
               height: 20,
               child: SvgPicture.asset(

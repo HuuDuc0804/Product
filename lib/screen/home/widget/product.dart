@@ -23,7 +23,7 @@ class ProductWidget extends StatelessWidget {
         color: item.color.withOpacity(0.1),
       ),
       child: Container(
-        padding: const EdgeInsets.only(top: 24),
+        padding: const EdgeInsets.only(top: 22),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,19 +38,21 @@ class ProductWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 24),
-            Container(
-              margin: const EdgeInsets.only(left: 2),
-              decoration: const BoxDecoration(
-                border: Border(),
-              ),
-              child: Text(
-                item.title,
-                textAlign: TextAlign.center,
-                style: gilroyBold.copyWith(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  color: AppColors.productText,
+            const SizedBox(height: 22),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.only(left: 2),
+                decoration: const BoxDecoration(
+                  border: Border(),
+                ),
+                child: Text(
+                  item.title,
+                  textAlign: TextAlign.center,
+                  style: gilroyBold.copyWith(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                    color: AppColors.productText,
+                  ),
                 ),
               ),
             ),

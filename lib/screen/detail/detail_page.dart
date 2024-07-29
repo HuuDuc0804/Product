@@ -54,6 +54,7 @@ class DetailPage extends StatelessWidget {
               const ProductReviewWidget(),
               const SizedBox(height: 18),
               buttonAddToBasket(size),
+              const SizedBox(height: 25),
             ],
           ),
         ),

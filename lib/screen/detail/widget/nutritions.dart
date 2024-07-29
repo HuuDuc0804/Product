@@ -47,9 +47,9 @@ class ProductNutritionsWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20),
-              GestureDetector(
-                onTap: () => debugPrint('onTab Next Nutritions'),
-                child: SizedBox(
+              IconButton(
+                onPressed: () => debugPrint('onTab Next Nutritions'),
+                icon: SizedBox(
                   width: 9,
                   height: 14,
                   child: SvgPicture.asset(

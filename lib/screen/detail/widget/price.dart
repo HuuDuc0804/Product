@@ -1,15 +1,22 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../utils/colors.dart';
 import '../../../utils/images.dart';
 import '../../../utils/style.dart';
 
-class ProductPriceWidget extends StatelessWidget {
+class ProductPriceWidget extends StatefulWidget {
   const ProductPriceWidget({
     super.key,
   });
 
+  @override
+  State<ProductPriceWidget> createState() => _ProductPriceWidgetState();
+}
+
+class _ProductPriceWidgetState extends State<ProductPriceWidget> {
+  int _counter = 1;
+  double _unitPrice = 4.99;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,9 +27,14 @@ class ProductPriceWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              GestureDetector(
-                onTap: () => debugPrint('onTab Decrement'),
-                child: SizedBox(
+              IconButton(
+                onPressed: () => setState(() {
+                  if (_counter == 1) {
+                    return;
+                  }
+                  _counter--;
+                }),
+                icon: SizedBox(
                   width: 17,
                   height: 17,
                   child: SvgPicture.asset(
@@ -31,7 +43,6 @@ class ProductPriceWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
                 padding: const EdgeInsets.symmetric(
                   horizontal: 19,
                   vertical: 14,
@@ -41,7 +52,7 @@ class ProductPriceWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(17),
                 ),
                 child: Text(
-                  '1',
+                  '$_counter',
                   style: gilroyBold.copyWith(
                     fontWeight: FontWeight.w600,
                     fontSize: 18,
@@ -50,9 +61,11 @@ class ProductPriceWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () => debugPrint('onTab Increment'),
-                child: SizedBox(
+              IconButton(
+                onPressed: () => setState(() {
+                  _counter++;
+                }),
+                icon: SizedBox(
                   width: 17,
                   height: 17,
                   child: SvgPicture.asset(
@@ -63,7 +76,7 @@ class ProductPriceWidget extends StatelessWidget {
             ],
           ),
           Text(
-            '\$4.99',
+            '\$${(_unitPrice * _counter).toStringAsFixed(2)}',
             style: gilroyBold.copyWith(
               fontWeight: FontWeight.w400,
               fontSize: 24,

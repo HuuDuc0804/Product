@@ -48,9 +48,9 @@ class ProductReviewWidget extends StatelessWidget {
                     }),
               ),
               const SizedBox(width: 16),
-              GestureDetector(
-                onTap: () => debugPrint('onTab Next Review'),
-                child: SizedBox(
+              IconButton(
+                onPressed: () => debugPrint('onTab Next Review'),
+                icon: SizedBox(
                   width: 9,
                   height: 14,
                   child: SvgPicture.asset(

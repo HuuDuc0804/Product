@@ -6,8 +6,10 @@ import '../../../utils/images.dart';
 import '../../../utils/style.dart';
 
 class SearchWidget extends StatelessWidget {
+  final TextEditingController controller;
   const SearchWidget({
     super.key,
+    required this.controller,
   });
 
   @override
@@ -31,6 +33,7 @@ class SearchWidget extends StatelessWidget {
           const SizedBox(width: 5),
           Expanded(
             child: TextField(
+              controller: controller,
               decoration: InputDecoration(
                 hintText: 'Search Store',
                 hintStyle: gilroyMedium.copyWith(
